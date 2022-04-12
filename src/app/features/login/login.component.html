@@ -1,1 +1,34 @@
-<p>login works!</p>
+<div class="betbox-pt-10 betbox-w-3 betbox-center">
+    <nz-card [nzTitle]="tituloCardTpl" class="betbox-shadow-card">
+        <ng-template #tituloCardTpl>
+            <div class="betbox-text-center">
+                <h1 nz-typography>Betbox</h1>
+            </div>
+        </ng-template>
+        <form nz-form [formGroup]="loginForm" (ngSubmit)="login()">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-group nzPrefixIcon="mail">
+                        <input type="text" nz-input formControlName="emailUsuario" placeholder="Email" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-group nzPrefixIcon="lock" [nzSuffix]="iconeVisualizacaoSenhaTpl">
+                        <input [type]="senhaVisivel ? 'text' : 'password'" nz-input formControlName="senhaUsuario"
+                            placeholder="Senha" />
+                        <ng-template #iconeVisualizacaoSenhaTpl>
+                            <i class="betbox-clickable" nz-icon [nzType]="senhaVisivel ? 'eye-invisible' : 'eye'"
+                                (click)="senhaVisivel = !senhaVisivel"></i>
+                        </ng-template>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <button nz-button [nzType]="'primary'" nzBlock>Login</button>
+            <div class="betbox-text-center betbox-pt-3">
+                <a>Cadastre-se</a>
+            </div>
+        </form>
+    </nz-card>
+</div>

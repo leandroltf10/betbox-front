@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.betbox-text-center { text-align: center; }
+.betbox-center { margin: 0 auto; }
+.betbox-clickable { cursor: pointer; }
+
+.betbox-pt-1 { padding-top: 1%; }
+.betbox-pt-2 { padding-top: 2%; }
+.betbox-pt-3 { padding-top: 3%; }
+.betbox-pt-4 { padding-top: 4%; }
+.betbox-pt-5 { padding-top: 5%; }
+.betbox-pt-6 { padding-top: 6%; }
+.betbox-pt-7 { padding-top: 7%; }
+.betbox-pt-8 { padding-top: 8%; }
+.betbox-pt-9 { padding-top: 9%; }
+.betbox-pt-10 { padding-top: 10%; }
+
+.betbox-w-1 { width: 10%; }
+.betbox-w-2 { width: 20%; }
+.betbox-w-3 { width: 30%; }
+.betbox-w-4 { width: 40%; }
+.betbox-w-5 { width: 50%; }
+.betbox-w-6 { width: 60%; }
+.betbox-w-7 { width: 70%; }
+.betbox-w-8 { width: 80%; }
+.betbox-w-9 { width: 90%; }
+.betbox-w-10 { width: 100%; }
