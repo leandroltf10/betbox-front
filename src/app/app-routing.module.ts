@@ -4,7 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule) 
+    loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'cadastro-usuario',
+    loadChildren: () => import('./features/usuario/cadastro-usuario/cadastro-usuario.module').then(m => m.CadastroUsuarioModule)
   },
   {
     path: '**',
