@@ -1,1 +1,80 @@
-<p>cadastro-usuario works!</p>
+<div class="betbox-pt-10 betbox-w-3 betbox-center">
+    <nz-card [nzTitle]="tituloCardTpl" class="betbox-shadow-card">
+        <ng-template #tituloCardTpl>
+            <div class="betbox-text-center">
+                <h3 nz-typography>Cadastro de usuário</h3>
+            </div>
+        </ng-template>
+        <form nz-form [formGroup]="cadastroUsuarioForm" (ngSubmit)="cadastrar()">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="erroNomeUsuarioTpl">
+                    <nz-input-group nzPrefixIcon="user">
+                        <input type="text" nz-input formControlName="nomeUsuario" placeholder="Nome" />
+                        <ng-template #erroNomeUsuarioTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">Informe seu nome
+                            </ng-container>
+                        </ng-template>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="erroEmailUsuarioTpl">
+                    <nz-input-group nzPrefixIcon="mail">
+                        <input type="text" nz-input formControlName="emailUsuario" placeholder="Email" />
+                        <ng-template #erroEmailUsuarioTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">Informe seu email
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('pattern')">Email inválido</ng-container>
+                        </ng-template>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="erroSenhaUsuarioTpl">
+                    <nz-input-group nzPrefixIcon="lock" [nzSuffix]="iconeVisualizacaoSenhaTpl">
+                        <input [type]="senhaVisivel ? 'text' : 'password'" nz-input formControlName="senhaUsuario"
+                            placeholder="Senha" (ngModelChange)="atualizarValidacaoConfirmacaoSenha()" />
+                        <ng-template #iconeVisualizacaoSenhaTpl>
+                            <i class="betbox-clickable" nz-icon [nzType]="senhaVisivel ? 'eye-invisible' : 'eye'"
+                                (click)="senhaVisivel = !senhaVisivel"></i>
+                        </ng-template>
+                        <ng-template #erroSenhaUsuarioTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">Informe sua senha
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('pattern')">
+                                <ul>
+                                    <li>Deve conter entre 6 e 15 caracteres</li>
+                                    <li>Incluir letras e números</li>
+                                </ul>
+                            </ng-container>
+                        </ng-template>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="erroConfirmacaoSenhaUsuarioTpl">
+                    <nz-input-group nzPrefixIcon="lock" [nzSuffix]="iconeVisualizacaoConfirmacaoSenhaTpl">
+                        <input [type]="confirmacaoSenhaVisivel ? 'text' : 'password'" nz-input
+                            formControlName="confirmacaoSenhaUsuario" placeholder="Confirme a senha" />
+                        <ng-template #iconeVisualizacaoConfirmacaoSenhaTpl>
+                            <i class="betbox-clickable" nz-icon
+                                [nzType]="confirmacaoSenhaVisivel ? 'eye-invisible' : 'eye'"
+                                (click)="confirmacaoSenhaVisivel = !confirmacaoSenhaVisivel"></i>
+                        </ng-template>
+                        <ng-template #erroConfirmacaoSenhaUsuarioTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">Confirme sua senha
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('confirm')">Senhas inconsistentes
+                            </ng-container>
+                        </ng-template>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <button nz-button [nzType]="'primary'" nzBlock
+                [disabled]="cadastroUsuarioForm.status === 'INVALID'">Cadastrar</button>
+            <div class="betbox-text-center betbox-pt-3">
+                <a [routerLink]="['/home']">Voltar</a>
+            </div>
+        </form>
+    </nz-card>
+</div>
