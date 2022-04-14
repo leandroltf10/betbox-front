@@ -43,4 +43,23 @@ describe('CadastroUsuarioComponent', () => {
   it('deve ser criado', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deve validar a confirmação de senha e imputar erro de confirmação se senha e confirmação estiverem diferentes', () => {
+    component.cadastroUsuarioForm = component.montarCadastroUsuarioForm();
+
+    component.cadastroUsuarioForm.controls.senhaUsuario.setValue('abc123');
+    component.cadastroUsuarioForm.controls.confirmacaoSenhaUsuario.setValue('abc12');
+
+    expect(component.cadastroUsuarioForm.controls.confirmacaoSenhaUsuario.getError('confirm')).toBeTrue();
+  });
+
+  it('deve validar a confirmação de senha e não imputar erros se senha e confirmação estiverem iguais', () => {
+    component.cadastroUsuarioForm = component.montarCadastroUsuarioForm();
+
+    component.cadastroUsuarioForm.controls.senhaUsuario.setValue('abc123');
+    component.cadastroUsuarioForm.controls.confirmacaoSenhaUsuario.setValue('abc123');
+
+    expect(component.cadastroUsuarioForm.controls.confirmacaoSenhaUsuario.getError('confirm')).toBeNull();
+  });
+
 });
